@@ -3,19 +3,25 @@
 # Declare characters used by this game. The color argument colorizes the
 # name of the character.
 
-define c = Character("Calypso")
+define config.name = _('Dead Davie')
 
-define b = Character("Bomfey")
+define gui.show_name = True
 
-define d = Character("Dwight")
+define config.version = "1.1"
 
-define N = Character("You")
+define c = Character("Calypso", who_color="#69a0df")
+
+define b = Character("Bomfey", who_color="#769776")
+
+define d = Character("Dwight", who_color="#cc1d46")
+
+define N = Character("You", who_color="#808080")
 
 define n = Character("")
 
-define k = Character("Officer Knees")
+define k = Character("Officer Knees", who_color="#ffffff")
 
-define t = Character("Officer Toes")
+define t = Character("Officer Toes", who_color="#ffffff")
 
 image LivingRoom = "images/bgs/Living.png"
 image Kitchen = "images/bgs/Kitchen.png"
@@ -42,6 +48,7 @@ label start:
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
+    play music "audio/music.mp3"
 
     scene deaddavey
     with Dissolve(0.5)
@@ -234,7 +241,7 @@ label after_LR:
     n "{i} You head to the kitchen to grab a drink of water.{/i}"
 
     scene Kitchen
-    n "{i}You see Nine and Calypso in the kitchen. You nod to Nine, who nod's back."
+    n "{i}You see Nine and Calypso in the kitchen. You nod to Nine, who nods back."
     show cside
     c "Oh, you’re here!"
     N "Mhm. So uh… can you tell me what happened tonight?"
@@ -257,12 +264,12 @@ label after_LR:
     hide cshade
     show ccry
     c "Then Dwight came up and started yelling at Davie, which is how I found out that they were dating Bomfey. I couldn’t believe it! I felt so betrayed."
-    c "Then Davie claimed that the proposal had been a dare from one of their friends, and that it was all “a joke."
+    c "Then Davie claimed that the proposal had been a dare from one of their friends, and that it was all “a joke.”"
     N "Oh wow."
     c "I was mortified. Nine dragged me to the nearby GYG to get away from the party."
     hide ccry
     show cgyg
-    c "I’ve gotta admit, it did make feel a bit better."
+    c "I’ve gotta admit, it did make me feel a bit better."
     N "How come you came back here?"
     hide cgyg
     show cside
@@ -271,7 +278,7 @@ label after_LR:
     show ccry
     c "We heard sirens and there were police and they were questioning people a-and, and then I saw Davie’s body so I started crying again and I think they were missing their necklace and—and…"
     n "{i}Huh… their necklace?{/i}"
-    c "…sorry"
+    c "…sorry."
     N "No, it’s fine. I’ll uh, I’ll leave you be. Thanks for telling me about what happened."
     hide ccry
     n "{i}Calypso nods, and you walk away. You decide to head back to the police.{/i}"
@@ -284,19 +291,21 @@ label police2:
     k "Ah, Kiddo. You’re back. Did you manage to talk to everyone?"
     N "Yeah… I talked to everyone. They’re all pretty shaken."
     show t_speaking at left
-    t "GOOD. SHAKEN PEOPLE SPILL SECRETS"
     hide k_normal
-    show k_mann at far_right_down
+    show k_srsly at far_right_down
+    t "GOOD. SHAKEN PEOPLE SPILL SECRETS"
     k "Well… anything stand out?"
     t "SPILL THE BEANS"
     hide t_speaking
     show t_idle at left
     N "Well… Bomfey said Davie proposed to Calypso in front of everyone. Dwight said they got into a fight after that. And Calypso mentioned that Davie’s necklace was missing when she saw the body."
-    hide k_mann
-    show k_normal at far_right_down
+    hide k_srsly
+    show k_uhmm at far_right_down
     k "Missing necklace… interesting."
     N "I just… wanted to give you everything I heard. Bomfey was confused, Dwight was angry, Calypso was crying. Everyone’s really shaken."
     N "They all disliked Davie; Bomfey and Calypso felt betrayed and Dwight… he seemed to really dislike Davie. Oh, they all had alibis though. "
+    hide k_uhmm
+    show k_normal at far_right_down
     k "You did good. We’ll let our chief, Officer Head, know what’s happened."
     t "SHOULDERS STAYED HOME SICK TODAY"
     k "… We’ll let them know too. Anyway, go take a breather, alright? We’ll probably be heading off soon, give us a call if you need anything. Stay safe, kid."
@@ -304,6 +313,7 @@ label police2:
 label end:
     scene black
     n "{i}You head to the bathroom to catch your breath.{/i}"
+    n "{i}You reach into your pocket.{/i}"
     scene Necklace
     n ""
 
